@@ -1,0 +1,573 @@
+1.CONTIGUOUS FILE ALLOCATION - PROBLEM - 2
+ 
+Write a C program to get the name of the file, the start block of the file and the length of the file from the user and display it in the given format. Also, print the disk blocks allocated to this file.
+ 
+Note: Assume that the disk space from 1 to 1000 is available for file allocation.
+ 
+Input format :
+Input consists of Filename (string ), the start of the block ( int ) and length ( int ) of the file.
+ 
+Output format :
+Use printf("%s%40s%40s","File Name","Start Block","Length\n"); to print the table header in  the specified format.
+Use  "%s%50d%50d\n"   to display the details in the specified format
+[ Refer Sample Input and Output for further specifications ]
+ 
+Sample Input and Output :
+[All text in bold corresponds to the input and the rest corresponds to output]
+
+Enter the name of the file
+
+F1
+Enter the start block of the file
+2
+Enter the length of the file
+8
+File Allocation Table
+File Name                             Start Block                                 Length
+F1                                                 2                                            8
+The disk blocks allocated to the file F1 are
+2 3 4 5 6 7 8 9
+
+
+#include<stdio.h>
+int main(){
+    char file[3];
+    int strt,len;
+    printf("\nEnter the name of the file");
+    scanf("\n%s",file);
+    printf("\nEnter the start block of the file");
+    scanf("\n%d",&strt);
+    printf("\nEnter the length of the file");
+    scanf("\n%d",&len);
+    printf("\nFile Allocation Table");
+    printf("\nFile Name     Start Block      Length");
+    printf("\n%s%50d%50d",file,strt,len);
+    printf("\nThe disk blocks allocated to the file %s are\n",file);
+    for(int i=strt;i<strt+len;i++)
+        printf("%d ",i);
+}
+
+
+--------------------------------------------------------------------------
+
+2.CONTIGUOUS FILE ALLOCATION - PROBLEM 3
+ 
+Write a C program to get the name of the file, the start block of the file and the length of the file from the user and display it in the given format. Also, print the disk blocks allocated to this file. Get the details of another file and check whether this file can be allocated the disk space using contiguous or sequential allocation.
+Note: 
+Assume that the disk space from 1 to 1000 is available for file allocation.
+ 
+Input format:
+Input consists of Filename (string ), the start of the block ( int ) and length ( int ) of two files.
+ 
+Output format:
+The output consists of given input in the file allocation table and says whether the second file is placed in the drive or not.
+Use printf ("%s%40s%40s","File Name","Start Block","Length\n"); to print the table header in the specified format.
+Use "%s%50d%50d\n" to display the details in the specified format.
+[ Refer Sample Input and Output for further specifications ]
+ 
+Sample Input and Output :
+[All text in bold corresponds to the input and the rest corresponds to output] 
+ 
+Enter the name of the file
+F1
+Enter the start block of the file
+2
+Enter the length of the file
+8
+File Allocation Table
+File Name                             Start Block                                 Length
+F1                                                 2                                                 8
+Enter the name of the file
+F2
+Enter the start block of the file
+6
+Enter the length of the file
+8
+F2 cannot be allocated disk space
+ 
+Sample Input and output 2:
+Enter the name of the file
+F1
+Enter the start block of the file
+2
+Enter the length of the file
+8
+File Allocation Table
+File Name                             Start Block                                 Length
+F1                                                 2                                                 8
+Enter the name of the file
+F2
+Enter the start block of the file
+11
+Enter the length of the file
+8
+F2 can be allocated disk space
+
+
+
+#include<stdio.h>
+struct file{
+    char name[3];
+    int strt,len;
+};
+int main(){
+  struct file f[2];
+  
+      printf("\nEnter the name of the file");
+      scanf("\n%s",f[0].name);
+      printf("\nEnter the start block of the file");
+      scanf("\n%d",&f[0].strt);
+      printf("\nEnter the length of the file");
+      scanf("\n%d",&f[0].len);
+      printf("\nFile Allocation Table");
+      printf("\nFile Name     Start Block      Length");
+      printf("\n%s%50d%50d",f[0].name,f[0].strt,f[0].len);
+       printf("\nEnter the name of the file");
+      scanf("\n%s",f[1].name);
+      printf("\nEnter the start block of the file");
+      scanf("\n%d",&f[1].strt);
+      printf("\nEnter the length of the file");
+      scanf("\n%d",&f[1].len);
+      if(f[1].strt>=f[0].strt && f[1].strt<=(f[0].strt+f[0].len-1))
+        printf("\n%s cannot be allocated disk space",f[1].name);
+      else
+        printf("\n%s can be allocated disk space",f[1].name);
+  
+}
+
+
+
+
+
+---------------------------------------------------------------------------
+3.CONTIGUOUS FILE ALLOCATION - PROBLEM - 1
+ 
+Write a C program to get the name of the file, the start block of the file and the length of the file from the user and display it in the given format.
+ 
+Note :
+Assume that the disk space from 1 to 1000 is available for file allocation.
+ 
+Input format :
+Input consists of Filename (string ), the start of the block ( int ) and length ( int ) of the file.
+ 
+Output format :
+Use printf("%s%40s%40s","File Name","Start Block","Length\n"); to print the table header in  the specified format.
+Use "%s%50d%50d\n"  to display the details in the specified format.
+[ Refer Sample Input and Output for further specifications ]
+ 
+Sample Input and Output :
+[All text in bold corresponds to the input and the rest corresponds to output] 
+ 
+Enter the name of the file
+F1
+Enter the start block of the file
+2
+Enter the length of the file
+8
+File Allocation Table
+File Name                             Start Block                                 Length
+F1                                                 2                                              8
+ 
+
+#include<stdio.h>
+int main(){
+    char name[3];
+    int strt,len;
+    printf("\nEnter the name of the file");
+    scanf("\n%s",name);
+    printf("\nEnter the start block of the file");
+    scanf("\n%d",&strt);
+    printf("\nEnter the length of the file");
+    scanf("\n%d",&len);
+    printf("\nFile Allocation Table");
+    printf("\nFile Name      Start Block      Length");
+    printf("\n%s%50d%50d",name,strt,len);
+}
+
+
+
+------------------------------------------------------------------------
+4.CONTIGUOUS FILE ALLOCATION - PROBLEM 4
+ 
+Write a C program to get the name, the start block, and length of n files and display the File Allocation table using Contiguous / Sequential Allocation.
+ 
+Note: 
+Assume that the disk space from 1 to 1000 is available for file allocation.
+ 
+Input format:
+Input consists of a number of files ( int ), Filename (string ), the start of the block ( int ) and length ( int ) of n files.
+ 
+Output format :
+The output consists of the file allocation table using contiguous file allocation technique.
+Use printf("%s%40s%40s","File Name","Start Block","Length\n"); to print the table header in the specified format
+Use "%s%50d%50d\n" to dipslay the details in the specified format.
+[ Refer Sample Input and Output for further specifications ]
+ 
+Sample Input and Output :
+[All text in bold corresponds to the input and the rest corresponds to output] 
+ 
+Enter the number of files to be allocated
+3
+Enter the name of the file 1
+F1
+Enter the start block of the file 1
+2
+Enter the length of the file 1
+8
+Enter the name of the file 2
+F2
+Enter the start block of the file 2
+5
+Enter the length of the file 2
+18
+F2 cannot be allocated disk space
+Enter the name of the file 3
+F3
+Enter the start block of the file 3
+1
+Enter the length of the file 3
+1
+File Allocation Table
+File Name                             Start Block                                 Length
+F1                                                 2                                                 8
+F3                                                 1                                                 1
+
+
+
+
+#include<stdio.h>
+struct file{
+    char name[3];
+    int strt,len;
+};
+int main(){
+    int num,i;
+    printf("\nEnter the number of files to be allocated");
+    scanf("\n%d",&num);
+    int flag[num];
+    struct file f[num];
+    for(i=0;i<num;i++){
+        printf("\nEnter the name of the file %d",i+1);
+        scanf("\n%s",f[i].name);
+        printf("\nEnter the start block of the file %d",i+1);
+        scanf("\n%d",&f[i].strt);
+        printf("\nEnter the length of the file %d",i+1);
+        scanf("\n%d",&f[i].len);
+        for(int j=0;j<i;j++){
+            if(f[i].strt>=f[j].strt && f[i].strt<=(f[j].strt+f[j].len-1)){
+                    flag[i]=1;
+                    break;
+            }        
+        }
+        if(flag[i]==1)
+            printf("\n%s cannot be allocated disk space",f[i].name);
+    }
+    printf("\nFile Allocation Table");
+    printf("\nFile Name       Start Block      Length");
+    for(i=0;i<num;i++){
+        if(flag[i]!=1)
+            printf("\n%s%50d%50d",f[i].name,f[i].strt,f[i].len);  
+    }
+    
+}
+---------------------------------------------------------------
+5. CONTIGUOUS FILE ALLOCATION - PROBLEM 5
+ 
+Write a program to print the given menu structure.
+ 
+Menu structure:
+Contiguous file allocation
+1.File Creation
+2.File Deletion
+3.Display File Allocation Table
+4.Exit
+Enter your choice
+ 
+Input format:
+Input consists of choice ( int ) to select the options in the menu.
+ 
+Output format:
+The output consists of descriptions for the option selected.
+[ Refer Sample Input and Output for further details ]
+ 
+Sample Input and Output:
+[ All text in bold corresponds to input ]
+Contiguous file allocation
+1.File Creation
+2.File Deletion
+3.Display File Allocation Table
+4.Exit
+Enter your choice
+1
+Allocates available memory for the given file
+Contiguous file allocation
+1.File Creation
+2.File Deletion
+3.Display File Allocation Table
+4.Exit
+Enter your choice
+2
+De-allocates the memory for specific file
+Contiguous file allocation
+1.File Creation
+2.File Deletion
+3.Display File Allocation Table
+4.Exit
+Enter your choice
+3
+Displays the file allocation details
+Contiguous file allocation
+1.File Creation
+2.File Deletion
+3.Display File Allocation Table
+4.Exit
+Enter your choice
+4
+
+
+#include<stdio.h>
+int main()
+{
+    int ch,i=1;
+    while(i==1){
+    printf("Contiguous file allocation\n");
+    printf("1.File Creation\n2.File Deletion\n3.Display File Allocation Table\n4.Exit\n");
+    printf("Enter your choice\n");
+    scanf("%d",&ch);
+    switch(ch)
+    {
+        case 1:
+        printf("Allocates available memory for the given file\n");
+        break;
+        case 2:
+        printf("De-allocates the memory for specific file\n");
+        break;
+        case 3:
+        printf("Displays the file allocation details\n");
+        break;
+        case 4:
+        i=0;
+        break;
+        
+        
+    }
+    
+    }
+    return 0;
+}
+
+
+----------------------------------------------------------------------
+
+6.CONTIGUOUS FILE ALLOCATION - PROBLEM 6
+ 
+Write a program to implement contiguous file allocation technique.
+ 
+Note : 
+Assume that the disk space from 1 to 1000 is available for file allocation.
+ 
+Input format :
+Input consists of choices ( int ) for selecting the required functionality and input corresponding to the choices selected.
+ 
+Output format :
+The output consists of the respective output of the choices selected.
+[ Refer Sample Input and Output for further details ]
+ 
+Sample Input and Output :
+[ All text in bold corresponds to input ]
+Contiguous file allocation
+1.File Creation
+2.File Deletion
+3.Display File Allocation Table
+4.Exit
+Enter your choice
+1
+Enter the name of the file
+F1
+Enter the start block of the file
+2
+Enter the length of the file
+8
+file F1 allocated disk space
+Contiguous file allocation
+1.File Creation
+2.File Deletion
+3.Display File Allocation Table
+4.Exit
+Enter your choice
+3
+File Allocation Table
+File Name Start Block Length
+F1 2 8
+Contiguous file allocation
+1.File Creation
+2.File Deletion
+3.Display File Allocation Table
+4.Exit
+Enter your choice
+1
+Enter the name of the file
+F2
+Enter the start block of the file
+6
+Enter the length of the file
+8
+F2 cannot be allocated disk space
+Contiguous file allocation
+1.File Creation
+2.File Deletion
+3.Display File Allocation Table
+4.Exit
+Enter your choice
+3
+File Allocation Table
+File Name Start Block Length
+F1 2 8
+Contiguous file allocation
+1.File Creation
+2.File Deletion
+3.Display File Allocation Table
+4.Exit
+Enter your choice
+1
+Enter the name of the file
+F3
+Enter the start block of the file
+21
+Enter the length of the file
+5
+file F3 allocated disk space
+Contiguous file allocation
+1.File Creation
+2.File Deletion
+3.Display File Allocation Table
+4.Exit
+Enter your choice
+3
+File Allocation Table
+File Name Start Block Length
+F1 2 8
+F3 21 5
+Contiguous file allocation
+1.File Creation
+2.File Deletion
+3.Display File Allocation Table
+4.Exit
+Enter your choice
+2
+Enter the name of the file to be deleted
+F1
+file F1 deleted
+Contiguous file allocation
+1.File Creation
+2.File Deletion
+3.Display File Allocation Table
+4.Exit
+Enter your choice
+1
+Enter the name of the file
+F2
+Enter the start block of the file
+6
+Enter the length of the file
+8
+file F2 allocated disk space
+Contiguous file allocation
+1.File Creation
+2.File Deletion
+3.Display File Allocation Table
+4.Exit
+Enter your choice
+3
+File Allocation Table
+File Name Start Block Length
+F3 21 5
+F2 6 8
+Contiguous file allocation
+1.File Creation
+2.File Deletion
+3.Display File Allocation Table
+4.Exit
+Enter your choice
+4
+
+
+
+
+
+
+
+#include<stdio.h>
+#include<string.h>
+struct file{
+    char name[3];
+    int strt,len;
+};
+int main(){
+    int ch,count=0,flag[10]={0};
+    struct file f[10];
+    do{
+    printf("\nContiguous file allocation");
+    printf("\n1.File Creation\n2.File Deletion\n3.Display File Allocation Table\n4.Exit");
+    printf("\nEnter your choice");
+    scanf("\n%d",&ch);
+    switch(ch){
+        case 1:
+                printf("\nEnter the name of the file");
+                scanf("\n%s",f[count].name);
+                printf("\nEnter  the start block of the file");
+                scanf("\n%d",&f[count].strt);
+                printf("\nEnter the length of the file");
+                scanf("\n%d",&f[count].len);
+                for(int i=0;i<count;i++){
+                    if((f[count].strt>=f[i].strt && f[count].strt<=(f[i].strt+f[i].len-1))&& flag[i]==0){
+                        
+                        flag[count]=1;
+                        break;
+                    }
+                }
+                if(flag[count]!=1){
+                    flag[count]=0;
+                    printf("\nfile %s allocated disk space",f[count].name);
+                    count++;
+                }
+                else{
+                   printf("\n%s cannot be allocated disk space",f[count].name);
+                   flag[count]=0;
+                   
+                }
+                break;
+        case 2:printf("\nEnter the name of the file to be deleted");
+                char na[3];
+                int i;
+                scanf("\n%s",na);
+                for(i=0;i<count;i++){
+                    if(strcmp(f[i].name,na)==0){
+                        flag[i]=1;
+                        break;
+                    }
+                }
+                printf("\nfile %s deleted",f[i].name);
+                break;
+        case 3: printf("\nFile Allocation Table");
+                printf("\nFile Name     Start Block     Length");
+                for(int i=0;i<count ;i++)
+                    if(flag[i]==0)
+                        printf("\n%s  %d   %d",f[i].name,f[i].strt,f[i].len);
+                break;
+        case 4: break;
+    }
+    }while(ch!=4);
+    
+}
+
+
+
+
+
+
+------------------------------------------------------------------
+
+
+
+

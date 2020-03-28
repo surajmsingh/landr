@@ -1,0 +1,213 @@
+
+
+
+BASIC LINUX
+
+
+
+
+____________________________________________________________________
+
+
+1.
+Pattern 1
+
+ 
+
+Write a program to print the pattern
+
+b*b
+
+***
+
+b*b
+
+ 
+
+Sample Ouput:
+
+b*b
+
+***
+
+b*b
+
+
+
+#!/bin/sh
+echo 'b*b'
+echo '***'
+echo 'b*b'
+
+___________________________________________________-______
+
+3.
+PATTERN 3
+Pattern 3
+
+Write a program to print the given pattern.
+
+ 
+
+Input Format:
+
+Input consists of a single integer.
+
+ 
+
+Output Format:
+
+Refer sample outputs. There is a trailing space at the end of each line.
+
+ 
+
+Sample Input:
+
+5
+
+ 
+
+Sample Output:
+
+5 4 3 2 1
+4 3 2 1
+3 2 1
+2 1
+1
+
+
+
+#!/bin/bash
+
+read num
+for((i=num;i>0;i--))
+do
+    for((j=i;j>0;j--))
+    do
+        echo -n "$j "
+    done
+    echo -n
+done
+
+
+_______________________________
+
+5.
+MAXIMUM OF 3
+
+Write a  program to find the maximum of 3 numbers.
+
+Input Format:
+
+Input consists of 3 lines. Each line consists of an integer.
+
+Output Format:
+
+Output consists of a single line. Refer sample output for the format.
+
+Sample Input :
+
+3
+
+5
+
+1
+
+ 
+
+Sample Output :
+
+5 is the maximum number
+
+
+
+
+#!/bin/bash
+
+read num1
+read num2
+read num3
+
+if(($num1 > $num2 & $num1 > $num3))
+then 
+    echo "$num1 is the maximum number"
+elif(($num2 > $num1 & $num2 > $num3))
+then
+    echo "$num2 is the maximum number"
+else
+    echo "$num3 is the maximum number"
+fi
+
+
+
+__________________________________________________________________
+
+Simulation of wc command
+
+ 
+Write a program to simulate the Unix Command wc.
+
+The input to the program is a string that corresponds to the file name.
+Note: #!/bin/sh  - include this command in first line
+
+Input File:
+T.txt
+I am a student.
+I study in AIT.
+I am in my Second Year.
+OS is one of my favorite subject.
+
+Sample Input and Output:
+T.txt
+4 21 90 T.txt
+
+
+
+#!/bin/sh 
+read file 
+read name
+
+$name > $file.txt
+filename='$file.txt'
+wc $file
+
+________________________________________________________
+
+
+Simulation of CP Command
+
+Write a program to simulate the Unix Command cp.
+
+The first input to the program corresponds to the source file name and the second input to the program corresponds to the destination file name.
+Note: #!/bin/sh  - include this command in first line
+
+Input File:
+T1.txt
+print 1
+print 2
+print 3
+print 4
+
+Sample Input and Output:
+T1.txt
+T2.txt
+
+Output File:
+T2.txt
+print 1
+print 2
+print 3
+print 4
+
+
+
+
+#!/bin/sh 
+
+filename='$T1.txt'
+filename='T2.txt'
+
+cp T1.txt T2.txt
+
+
+--------------------------------------------------------------------------
